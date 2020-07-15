@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Weather App Marjeta</title>
+    <meta charset="UTF-8" />
+    <link href="src/styles.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous" />
+    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@200;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200;400&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/7a2ac840ff.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-8">
+                <form id="search-form">
+                    <input type="search" placeholder="Search city" autofocus="off" autocomplete="off" class="search"
+                        id="city-input"></form>
+            </div>
+            <div class="col-2">
+                <input type="submit" value="Search" class="form-control btn btn-primary shadow-sm" />
+            </div>
+            <div class="col-2">
+                <button class="btn-current shadow-sm" id="location-current">Current Location</button>
+            </div>
+        </div>
+
+        <!-- Current info-->
+        <section>
+            <div class="row">
+                <div class="col-6 current-info">
+                    <div class="row">
+                        <div class="col">
+                            <h1 class="heading"><span id="temperature">28</span>°C</h1>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <p class="date-day">14. 6. 2020 / Sunday</p>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-2 offset-4 border-right">
+                            <p>Day</p>
+                            <p>28°C</p>
+                        </div>
+                        <div class="col-2">
+                            <p>Night</p>
+                            <p>15°C</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Current Picture & Rain-->
+                <div class="col-6 current-info">
+                    <div class="col centerd"><i class="fas fa-sun current"></i></div>
+                    <p>Rain 0 %</p>
+                    <p>Snow 0 %</p>
+                </div>
+        </section>
+
+        <!-- City and state-->
+        <section class="hourly-forecast">
+            <div class="row">
+                <div class="col">
+                    <h2 class="heading" id="selected-city">
+                        Planina pri Sevnici
+                    </h2>
+                    <h3 class="heading" id="country">Slovenija</h3>
+                </div>
+            </div>
+        </section>
+
+        <section class="hourly-forecast">
+            <div class="row">
+                <div class="col">
+                    <h4 class="heading">Hourly Forecast</h4>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-2 hour-forecast border-right">
+                    <p>14.00</p>
+                    <h5>28°C</h5>
+                    <i class="fas fa-sun weather-icons"></i>
+                </div>
+                <div class="col-2 hour-forecast border-right">
+                    <p>15.00</p>
+                    <h5>27°C</h5>
+                    <i class="fas fa-sun weather-icons"></i>
+                </div>
+                <div class="col-2 hour-forecast border-right">
+                    <p>16.00</p>
+                    <h5>25°C</h5>
+                    <i class="fas fa-sun weather-icons"></i>
+                </div>
+                <div class="col-2 hour-forecast border-right">
+                    <p>17.00</p>
+                    <h5>20°C</h5>
+                    <i class="fas fa-sun weather-icons"></i>
+                </div>
+                <div class="col-2 hour-forecast border-right">
+                    <p>18.00</p>
+                    <h5>23°C</h5>
+                    <i class="fas fa-cloud-sun weather-icons"></i>
+                </div>
+                <div class="col-2 hour-forecast border-right">
+                    <p>19.00</p>
+                    <h5>20°C</h5>
+                    <i class="fas fa-cloud-sun weather-icons"></i>
+                </div>
+            </div>
+        </section>
+
+        <section class="daily-forecast">
+            <div class="row">
+                <div class="col">
+                    <h4 class="heading">Daily Forecast</h4>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-2 day-forecast border-right">
+                    <p class="day">Monday</p>
+                    <h5>16°C</h5>
+                    <i class="fas fa-cloud-showers-heavy weather-icons"></i>
+                </div>
+                <div class="col-2 day-forecast border-right">
+                    <p class="day">Tuesday</p>
+                    <h5>16°C</h5>
+                    <i class="fas fa-poo-storm weather-icons"></i>
+                </div>
+                <div class="col-2 day-forecast border-right">
+                    <p class="day">Wednesday</p>
+                    <h5>16°C</h5>
+                    <i class="fas fa-poo-storm weather-icons"></i>
+                </div>
+                <div class="col-2 day-forecast border-right">
+                    <p class="day">Thurstday</p>
+                    <h5>17°C</h5>
+                    <i class="fas fa-cloud-rain weather-icons"></i>
+                </div>
+                <div class="col-2 day-forecast border-right">
+                    <p class="day">Friday</p>
+                    <h5>17°C</h5>
+                    <i class="fas fa-cloud-sun weather-icons"></i>
+                </div>
+                <div class="col-2 day-forecast border-right">
+                    <p class="day">Saturday</p>
+                    <h5>18°C</h5>
+                    <i class="fas fa-cloud-sun weather-icons"></i>
+                </div>
+            </div>
+        </section>
+
+        <section class="rain-forecast">
+            <div class="row">
+                <div class="col">
+                    <h4 class="heading">Rain radar</h4>
+                    <img src="images/animation.gif" class="radar-img">
+                </div>
+            </div>
+        </section>
+    </div>
+    </div>
+    <script src="src/index.js"></script>
+</body>
+
+</html>
